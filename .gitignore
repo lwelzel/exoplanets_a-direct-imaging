@@ -301,3 +301,5 @@ fabric.properties
 *.filepart
 *.DS_Store
 *.pdf
+
+!DIP_CO_ratio.csv

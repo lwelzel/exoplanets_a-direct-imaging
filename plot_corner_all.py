@@ -26,6 +26,9 @@ reduced_full_data = full_data.groupby(full_data.index).median()  # MEDIAN
 discovery = [e[-1]["discoverymethod"].unique()[0] for e in full_data.groupby(full_data.index)]
 reduced_full_data["discoverymethod"] = discovery
 
+gray_orange = sns.color_palette("dark:orange", 2)
+reduced_full_data["method_alt"] = [d if d == "Imaging" else "Other" for d in discovery]
+
 reduced_full_data.dropna(axis=0, how="all")
 
 # print(reduced_full_data["discoverymethod"].unique())
@@ -70,8 +73,8 @@ for ax in axes:
         ax.clear()
         sns.histplot(data=reduced_full_data, ax=ax,
                      x=x_label,
-                     stat="density", common_norm=False, bins=10, kde=True, multiple="fill",
-                     hue="Method", palette="husl",
+                     stat="density", common_norm=False, bins=10, kde=True, multiple="stack",  # multiple="fill",
+                     hue="method_alt", palette=gray_orange,
                      log_scale=True,
                      legend=False)
         # sns.kdeplot(data=reduced_full_data, ax=ax,

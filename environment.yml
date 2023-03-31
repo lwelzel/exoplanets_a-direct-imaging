@@ -17,4 +17,6 @@ dependencies:
   - jupyter
   - seaborn
   - plotly
+  - mpld3
+  - astropy
 prefix: C:\Users\lukas\anaconda3\envs\exopa
